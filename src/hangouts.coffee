@@ -16,9 +16,10 @@ module.exports = (robot) ->
 
     console.log msg.match
     console.log msg.message.user
-    title = "#{msg.match[2] || msg.message.user.name}-#{+new Date()}"
-    slug  = title.replace(/[^0-9a-z-]+/gi, '-')
-    msg.send "I've started a Hangout! Join here: https://plus.google.com/hangouts/_/#{hangoutsDomain}/#{slug}"
+    username = msg.message.user.name
+    slug = msg.match[2].replace(" ", "-")
+    title = "#{msg.match[2] || username}"
+    msg.send "OK #{username}, I've started a Hangout! Join here: https://plus.google.com/hangouts/_/#{hangoutsDomain}/#{title}"
 
   missingEnvironment = (msg) ->
     missingAnything = false
